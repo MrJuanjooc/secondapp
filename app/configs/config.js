@@ -6,4 +6,4 @@ if (ambiente.error) {
 }
 
 const {parsed: env} = ambiente;
-module.exports = env;
+module.exports =env;
