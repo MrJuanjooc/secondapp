@@ -31,7 +31,7 @@ mongoose.connect(
   }
 );
 
-let db = mongoose.Connection;
+let db = mongoose.connection;
 db.on("error", console.error.bind(console, "Error Conexión Base de Datos"));
 
 if (!db) {
