@@ -10,7 +10,7 @@ exports.autenticar = (user, pass) => {
   }
 };
 
-exports.validarToken = (token) => {
-    const decodedToken = jwt.verify(token, config.SECRET);
-    return decodedToken;
+exports.validarToken = token => {
+  const decodedToken = jwt.verify(token, config.SECRET);
+  return decodedToken;
 };

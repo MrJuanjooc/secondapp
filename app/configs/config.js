@@ -1,9 +1,9 @@
 const config = require("dotenv"),
-ambiente = config.config();
+  ambiente = config.config();
 
 if (ambiente.error) {
-    throw ambiente.error;
+  throw ambiente.error;
 }
 
-const {parsed: env} = ambiente;
-module.exports =env;
+const { parsed: env } = ambiente;
+module.exports = env;

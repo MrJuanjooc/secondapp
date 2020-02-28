@@ -12,19 +12,22 @@ exports.obtenerUrbanizacion = async () => {
   });
 };
 
-exports.crearUrbanizacion = async (urbanizacion) => {
+exports.crearUrbanizacion = async urbanizacion => {
   return await urbanizacionModule.create(urbanizacion);
 };
 
-exports.eliminarUrbanizacion = async (idUrbanizacion) => {
-    return await urbanizacionModule.findByIdAndDelete(idUrbanizacion);
+exports.eliminarUrbanizacion = async idUrbanizacion => {
+  return await urbanizacionModule.findByIdAndDelete(idUrbanizacion);
 };
 
-exports.findUrbanizacion = async (idUrbanizacion) => {
-    return await urbanizacionModule.findById(idUrbanizacion)
+exports.findUrbanizacion = async idUrbanizacion => {
+  return await urbanizacionModule
+    .findById(idUrbanizacion)
     .populate("apartamentos", "numero piso");
 };
 
 exports.actualizarUrbanizacion = async (idUrbanizacion, data) => {
-    return await urbanizacionModule.findByIdAndUpdate(idUrbanizacion, data, {new: true});
+  return await urbanizacionModule.findByIdAndUpdate(idUrbanizacion, data, {
+    new: true
+  });
 };

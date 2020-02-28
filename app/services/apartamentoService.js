@@ -21,7 +21,7 @@ exports.crearApartamento = async (apartamento, urbanizacion, propietario) => {
   Propietario.save();
 };
 
-exports.eliminarApartamento = async (idApartamento) => {
+exports.eliminarApartamento = async idApartamento => {
   return await apartamentoModel.findByIdAndDelete(idApartamento);
 };
 
@@ -33,5 +33,7 @@ exports.findApartamento = async idApartamento => {
 };
 
 exports.actualizarApartamento = async (idApartamento, data) => {
-  return await apartamentoModel.findByIdAndUpdate (idApartamento, data, {new: true});
+  return await apartamentoModel.findByIdAndUpdate(idApartamento, data, {
+    new: true
+  });
 };

@@ -1,14 +1,14 @@
 const propietarioController = require("../controllers/propietarioController");
 
 module.exports = router => {
-    router
+  router
     .route("/propietario")
     .get(propietarioController.obtenerPropietarios)
     .post(propietarioController.crearPropietario);
 
-    router
+  router
     .route("/propietario/:id")
     .delete(propietarioController.eliminarPropietario)
     .get(propietarioController.findPropietario)
     .put(propietarioController.actualizarPropietario);
-}
+};
