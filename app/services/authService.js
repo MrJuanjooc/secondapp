@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
-config = require("../configs/config");
+const config = require("../configs/config");
+const userService = require("../services/userService");
 
 exports.autenticar = (user, pass) => {
   if (user == pass) {
@@ -8,6 +9,16 @@ exports.autenticar = (user, pass) => {
   } else {
     return "Error";
   }
+};
+
+exports.signUp = async user => {
+  const username = user.userName;
+  const userExist = await userService.getUserByUsername(username);
+
+  if (userExist) {
+    throw new Error("El usuario ya existe");
+  }
+  return await userService.createUser(user);
 };
 
 exports.validarToken = token => {
