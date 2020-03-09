@@ -7,3 +7,4 @@ module.exports = router => {
 
   router.route('/signup').post(authController.singUp);
 };
+
