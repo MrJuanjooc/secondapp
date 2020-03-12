@@ -1,9 +1,10 @@
 const apartamentoController = require("../controllers/apartamentoController");
+const authMiddleware = require('../middlewares/authMiddleware');
 
 module.exports = router => {
   router
     .route("/apartamento")
-    .get(apartamentoController.obtenerApartamento)
+    .get(authMiddleware,apartamentoController.obtenerApartamento)
     .post(apartamentoController.crearApartamento);
 
   router

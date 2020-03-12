@@ -4,7 +4,7 @@ const userService = require("../services/userService");
 const userModel = require("../models/userModel");
 
 exports.autenticar = async (username, pass) => {
-  const user = await userService.getUserByUsername(username); //se busca el usuario por el nombre de usuario
+  const user = await userService.getUserByUsername(username); //se busca el usuario por el nombre del usuario
   if (!user) {
     throw new Error("Usuario no encontrado o no Existe");
   }
