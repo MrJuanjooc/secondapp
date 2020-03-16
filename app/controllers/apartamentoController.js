@@ -1,29 +1,21 @@
 const apartamentoService = require("../services/apartamentoService");
 
 exports.obtenerApartamento = async (req, res) => {
-  try {
-    let getResult = await apartamentoService.obtenerApartamento();
-    res.status(200).send(getResult);
-  } catch (err) {
-    res.status(500).send(err);
-  }
+  let getResult = await apartamentoService.obtenerApartamento();
+  res.status(200).send(getResult);
 };
 
 exports.crearApartamento = async (req, res) => {
-  try {
-    const apartamento = req.body;
-    const urbanizacion = req.body;
-    const propietario = req.body;
+  const apartamento = req.body;
+  const urbanizacion = req.body.urbanizacion;
+  const propietario = req.body.propietario;
 
-    let addResult = await apartamentoService.crearApartamento(
-      apartamento,
-      urbanizacion,
-      propietario
-    );
-    res.status(200).send(addResult);
-  } catch (err) {
-    res.status(500).send(err);
-  }
+  let addResult = await apartamentoService.crearApartamento(
+    apartamento,
+    urbanizacion,
+    propietario
+  );
+  res.status(200).send(addResult);
 };
 
 exports.eliminarApartamento = async (req, res) => {

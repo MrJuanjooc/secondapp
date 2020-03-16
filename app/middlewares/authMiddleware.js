@@ -1,19 +1,18 @@
 const jwt = require('jsonwebtoken');
 const config = require ('../configs/config');
+const authException = require ('../exceptions/notAuthException')
 
 
 module.exports = (req, res, next) => {
     const token = req.headers ['authorization'];
 
     if (!token) {
-        return res.status(401).send ({error: 'No se encontro el Token'})
-    } else {
-        
+        throw new authException();
     }
 
     jwt.verify(token, config.SECRET, (err, decToken) => {
         if (err ) {
-            return res.status(401).send({error: 'Token No valido'});
+            throw new authException();
         }
         req.user = decToken.user;
         next();

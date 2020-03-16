@@ -5,7 +5,9 @@ const express = require("express"),
   router = express.Router(),
   routes = require("./app/routes/index.js"),
   mongoose = require("mongoose");
-
+  errorMiddleware = require('./app/middlewares/errorMiddleware');
+  
+require ('express-async-errors');
 app.use(
   bodyParser.urlencoded({
     extended: true
@@ -16,6 +18,8 @@ app.use(bodyParser.json());
 
 routes(router);
 app.use("/api", router);
+
+app.use(errorMiddleware);
 
 mongoose.connect(
   "mongodb://" + config.BD_IP + ":" + config.BD_PORT + "/" + config.BD_NAME,
